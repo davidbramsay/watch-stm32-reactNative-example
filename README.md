@@ -14,3 +14,5 @@ Features include:
 - app can send vibration on command
 - app can send arbitrary strings to be displayed on the watch
 
+This works with the companion app 'Watch_BLEFreeRTOS_V1' here:
+https://github.com/dramsay9/watch-stm32-main-development
