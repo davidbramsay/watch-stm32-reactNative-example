@@ -77,7 +77,7 @@ export default class BLE extends Component {
   }
 
   LEDPress(){
-        alert('ledpress');
+    this.sendLEDStateToWatch();
   }
 
   VibrateToggle(){
@@ -267,6 +267,13 @@ export default class BLE extends Component {
     console.log(hex_duration);
     console.log('03' + hex_duration);
     this.state.writeCharacteristic.writeWithoutResponse(this.hexToBase64('03' + hex_duration));
+  }
+
+  sendLEDStateToWatch(ledstate=4){
+    //ledstate => 1=off, 2=time, 3=touch, 4=flash, 5=spiral
+    var hex_val = ledstate.toString(16);
+    if (hex_val.length % 2) { hex_val = '0' + hex_val; }
+    this.state.writeCharacteristic.writeWithoutResponse(this.hexToBase64('07' + hex_val));
   }
 
   //Test Cases ======================================
